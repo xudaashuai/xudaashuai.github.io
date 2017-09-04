@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="徐大帅的博客">
 <meta property="og:description" content="用VS2015运行老罗代码会出现错误，下面给出对应解决方法">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-03T15:37:21.200Z">
+<meta property="og:updated_time" content="2017-09-04T04:43:21.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机图形学第一课--环境配置">
 <meta name="twitter:description" content="用VS2015运行老罗代码会出现错误，下面给出对应解决方法">
@@ -179,7 +179,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1&gt;------ 已启动生成: 项目: teapots, 配置: Debug Win32 ------</div><div class="line">1&gt;cl : 命令行 error D8016: “/ZI”和“/Gy-”命令行选项不兼容</div></pre></td></tr></table></figure>
 <p>解决方法：</p>
 <p>项目 - teapots 属性 - 配置属性 - C/C++ - 常规 - 调试信息格式 设置为 无 或者 程序数据库 (/Zi)。</p>
-<h2 id="glut环境配置问题"><a href="#glut环境配置问题" class="headerlink" title="glut环境配置问题"></a>glut环境配置问题</h2><p>​       glut32.dll 复制到 C:\Windows\SysWOW64<br>​       glut32.lib 复制到 C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64<br>​       glut.h       复制到 C:\Program Files (x86)\Windows Kits\8.1\Include\um\gl</p>
+<h2 id="glut环境配置问题"><a href="#glut环境配置问题" class="headerlink" title="glut环境配置问题"></a>glut环境配置问题</h2><p>​       glut32.dll 复制到 C:\Windows\SysWOW64<br>​       glut32.lib 复制到 C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64<br>​       glut.h       复制到 C:\Program Files (x86)\Windows Kits\8.1\Include\um\gl<br>​    后面的两个目录中间的8.1也有可能是10，不一定完全相同，可以在C:\Program Files (x86)\Windows Kits下找一下。</p>
 <p>没了，还有其他问题，或者是上面有什么错误的地方可以和我讨论。</p>
 
       

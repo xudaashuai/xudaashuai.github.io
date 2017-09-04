@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="徐大帅的博客">
 <meta property="og:description" content="教务网站实在是太丑了，于是我想要写一个chrome插件让他变得好看一些些 目标-[ ] 好看一些     -[x] 登录-[ ] 完整的单页应用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-03T10:58:12.787Z">
+<meta property="og:updated_time" content="2017-09-03T15:39:14.752Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="中国地质大学（武汉）教务网站美化chrome小插件">
 <meta name="twitter:description" content="教务网站实在是太丑了，于是我想要写一个chrome插件让他变得好看一些些 目标-[ ] 好看一些     -[x] 登录-[ ] 完整的单页应用">
@@ -176,6 +176,10 @@
         <p>教务网站实在是太丑了，于是我想要写一个chrome插件让他变得好看一些些</p>
 <h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>-[ ] 好看一些<br>     -[x] 登录<br>-[ ] 完整的单页应用</p>
 <a id="more"></a>
+<h2 id="chrome插件开发基础"><a href="#chrome插件开发基础" class="headerlink" title="chrome插件开发基础"></a>chrome插件开发基础</h2><p>manife.json中配置了插件的大部分功能信息</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">"name"</span>: <span class="string">"地大教务网站登录小助手"</span>,</div><div class="line">    <span class="attr">"version"</span>: <span class="string">"1.0"</span>,</div><div class="line">    <span class="attr">"manifest_version"</span>: <span class="number">2</span>,</div><div class="line">    <span class="attr">"description"</span>: <span class="string">"不用输验证码啦哟"</span>,</div><div class="line">    <span class="attr">"icons"</span>: &#123;</div><div class="line">        <span class="attr">"16"</span>: <span class="string">"images/icon16.png"</span>,</div><div class="line">        <span class="attr">"48"</span>: <span class="string">"images/icon48.png"</span>,</div><div class="line">        <span class="attr">"128"</span>: <span class="string">"images/icon128.png"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"browser_action"</span>: &#123;</div><div class="line">        <span class="attr">"default_icon"</span>: &#123;</div><div class="line">            <span class="attr">"19"</span>: <span class="string">"images/icon19.png"</span>,</div><div class="line">            <span class="attr">"38"</span>: <span class="string">"images/icon38.png"</span></div><div class="line">        &#125;,</div><div class="line">        <span class="attr">"default_title"</span>: <span class="string">"test"</span>,</div><div class="line">        <span class="attr">"default_popup"</span>: <span class="string">"html/popup.html"</span></div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"content_scripts"</span>:[&#123;</div><div class="line">        // 登录页面</div><div class="line">        "matches":["*://portal.cug.edu.cn/zfca/*"],</div><div class="line">        "js":["js/login.js"],</div><div class="line">        "css":["css/login.css"],</div><div class="line">        "run_at":"document_end"</div><div class="line">    &#125;,&#123;</div><div class="line">        //首页</div><div class="line">        "matches":["*://*/xs_main.aspx?xh=*"],</div><div class="line">        "js":["js/index.js"],</div><div class="line">        "css":["css/index.css"]</div><div class="line">    &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>content_scripts 中配置了在打开某些特定网页时将会注入的js和css文件，我们利用这两个东西来把网站变好看。</p>
+
       
 
       
@@ -327,7 +331,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#目标"><span class="toc-number">1.</span> <span class="toc-text">目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chrome插件开发基础"><span class="toc-number">2.</span> <span class="toc-text">chrome插件开发基础</span></a></li></ol>
                     </div>
                 </span>
             </div>
