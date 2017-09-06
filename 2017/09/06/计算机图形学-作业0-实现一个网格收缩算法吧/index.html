@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xudaashuai.github.io">
-  <title>Archives | 徐大帅的博客</title>
+  <title>计算机图形学-作业0-实现一个网格收缩算法吧 | 徐大帅的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="爱你哟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="徐大帅的博客">
-<meta property="og:url" content="https://xudaashuai.github.io/archives/index.html">
+  <meta name="description" content="一个3d模型是由很多三角形组成的呀，在小小的减少显示细节的前提下缩小模型三角形个数是极其有用的呀。 那就来实现一个极其极其简单的算法来完成这个过程吧。 这个算法是我提出的（应该，因为实在太简单了），这个算法的工作方法就是迭代将最小的线段删除，用他的中点来代替。">
+<meta name="keywords" content="计算机图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机图形学-作业0-实现一个网格收缩算法吧">
+<meta property="og:url" content="https://xudaashuai.github.io/2017/09/06/计算机图形学-作业0-实现一个网格收缩算法吧/index.html">
 <meta property="og:site_name" content="徐大帅的博客">
-<meta property="og:description" content="爱你哟">
+<meta property="og:description" content="一个3d模型是由很多三角形组成的呀，在小小的减少显示细节的前提下缩小模型三角形个数是极其有用的呀。 那就来实现一个极其极其简单的算法来完成这个过程吧。 这个算法是我提出的（应该，因为实在太简单了），这个算法的工作方法就是迭代将最小的线段删除，用他的中点来代替。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-06T16:28:20.504Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="徐大帅的博客">
-<meta name="twitter:description" content="爱你哟">
+<meta name="twitter:title" content="计算机图形学-作业0-实现一个网格收缩算法吧">
+<meta name="twitter:description" content="一个3d模型是由很多三角形组成的呀，在小小的减少显示细节的前提下缩小模型三角形个数是极其有用的呀。 那就来实现一个极其极其简单的算法来完成这个过程吧。 这个算法是我提出的（应该，因为实在太简单了），这个算法的工作方法就是迭代将最小的线段删除，用他的中点来代替。">
   
     <link rel="alternative" href="/atom.xml" title="徐大帅的博客" type="application/atom+xml">
   
@@ -151,36 +153,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-计算机图形学-作业0-实现一个网格收缩算法吧" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      计算机图形学-作业0-实现一个网格收缩算法吧
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/06/计算机图形学-作业0-实现一个网格收缩算法吧/" class="archive-article-date">
+
+        
+        <a href="/2017/09/06/计算机图形学-作业0-实现一个网格收缩算法吧/" class="archive-article-date">
   	<time datetime="2017-09-06T12:18:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/06/计算机图形学-作业0-实现一个网格收缩算法吧/">计算机图形学-作业0-实现一个网格收缩算法吧</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一个3d模型是由很多三角形组成的呀，在小小的减少显示细节的前提下缩小模型三角形个数是极其有用的呀。</p>
+<p>那就来实现一个极其极其简单的算法来完成这个过程吧。</p>
+<p>这个算法是我提出的（应该，因为实在太简单了），这个算法的工作方法就是迭代将最小的线段删除，用他的中点来代替。</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">zip</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">array</span>&lt;GLfloat, <span class="number">3</span>&gt;&gt; &amp;points, <span class="built_in">vector</span>&lt;<span class="built_in">array</span>&lt;<span class="keyword">int</span>, <span class="number">2</span>&gt;&gt; &amp;lines, <span class="built_in">vector</span>&lt;<span class="built_in">array</span>&lt;<span class="keyword">int</span>, <span class="number">3</span>&gt;&gt; &amp;triangles, <span class="keyword">int</span> num)</span> </span>&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="comment">// 计算并找出最短线段</span></div><div class="line">		<span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; lineLengths;</div><div class="line">		<span class="keyword">int</span> index = <span class="number">0</span>;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> &amp;line : lines) &#123;</div><div class="line">			<span class="keyword">float</span> distance = pointDistance(points[line[<span class="number">0</span>]<span class="number">-1</span>], points[line[<span class="number">1</span>]<span class="number">-1</span>]);</div><div class="line">			lineLengths.push_back(distance);</div><div class="line">			<span class="keyword">if</span> (distance &lt; lineLengths[index]) &#123;</div><div class="line">				index = lineLengths.size()<span class="number">-1</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="number">2</span>;</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++)</div><div class="line">		&#123;</div><div class="line">			points[lines[index][<span class="number">0</span>]<span class="number">-1</span>][i] = (points[lines[index][<span class="number">0</span>]<span class="number">-1</span>][i] + points[lines[index][<span class="number">1</span>]<span class="number">-1</span>][i]) / <span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="number">3</span>;</div><div class="line"></div><div class="line">		lines.erase(lines.begin() + index);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span>&amp;triangle:triangles)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">auto</span> &amp;i : triangle) &#123;</div><div class="line">				<span class="keyword">if</span> (i == lines[index][<span class="number">1</span>]) &#123;</div><div class="line">					i = lines[index][<span class="number">0</span>];</div><div class="line">				&#125;</div><div class="line">			&#125;	</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">cout</span> &lt;&lt; <span class="number">4</span> ;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wepay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -192,214 +228,117 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://xudaashuai.github.io/2017/09/06/计算机图形学-作业0-实现一个网格收缩算法吧/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/05/计算机图形学-作业0踩坑指南/" class="archive-article-date">
-  	<time datetime="2017-09-05T02:12:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/05/计算机图形学-作业0踩坑指南/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机图形学-作业0踩坑指南</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/05/计算机图形学-作业0踩坑指南/">计算机图形学-作业0踩坑指南</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">计算机图形学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/05/as/" class="archive-article-date">
-  	<time datetime="2017-09-05T02:12:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/05/as/">as</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/03/计算机图形学第一课-环境配置/" class="archive-article-date">
-  	<time datetime="2017-09-03T15:25:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/计算机图形学第一课-环境配置/">计算机图形学第一课--环境配置</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">计算机图形学</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/03/中国地质大学（武汉）教务网站美化chrome小插件/" class="archive-article-date">
-  	<time datetime="2017-09-03T06:15:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/中国地质大学（武汉）教务网站美化chrome小插件/">中国地质大学（武汉）教务网站美化chrome小插件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">chrome</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/03/搭建自己的小博客/" class="archive-article-date">
-  	<time datetime="2017-09-03T06:06:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/搭建自己的小博客/">搭建自己的小博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/22/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-22T15:08:34.730Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/22/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -423,8 +362,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
