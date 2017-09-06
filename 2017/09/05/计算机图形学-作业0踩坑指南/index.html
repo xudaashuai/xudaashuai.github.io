@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://xudaashuai.github.io">
-  <title>Tag: chrome | 徐大帅的博客</title>
+  <title>计算机图形学-作业0踩坑指南 | 徐大帅的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="爱你哟">
-<meta property="og:type" content="website">
-<meta property="og:title" content="徐大帅的博客">
-<meta property="og:url" content="https://xudaashuai.github.io/tags/chrome/index.html">
+  <meta name="description" content="作业一的确比较简单耶，还是有一些些坑容易踩中。">
+<meta name="keywords" content="计算机图形学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机图形学-作业0踩坑指南">
+<meta property="og:url" content="https://xudaashuai.github.io/2017/09/05/计算机图形学-作业0踩坑指南/index.html">
 <meta property="og:site_name" content="徐大帅的博客">
-<meta property="og:description" content="爱你哟">
+<meta property="og:description" content="作业一的确比较简单耶，还是有一些些坑容易踩中。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-06T09:45:51.070Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="徐大帅的博客">
-<meta name="twitter:description" content="爱你哟">
+<meta name="twitter:title" content="计算机图形学-作业0踩坑指南">
+<meta name="twitter:description" content="作业一的确比较简单耶，还是有一些些坑容易踩中。">
   
     <link rel="alternative" href="/atom.xml" title="徐大帅的博客" type="application/atom+xml">
   
@@ -151,60 +153,207 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-计算机图形学-作业0踩坑指南" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/09/03/中国地质大学（武汉）教务网站美化chrome小插件/" class="archive-article-date">
-  	<time datetime="2017-09-03T06:15:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/09/03/中国地质大学（武汉）教务网站美化chrome小插件/">中国地质大学（武汉）教务网站美化chrome小插件</a>
+    <h1 class="article-title" itemprop="name">
+      计算机图形学-作业0踩坑指南
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/09/05/计算机图形学-作业0踩坑指南/" class="archive-article-date">
+  	<time datetime="2017-09-05T02:12:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作业一的确比较简单耶，还是有一些些坑容易踩中。</p>
+<a id="more"></a>
+<h2 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h2><h3 id="改变颜色"><a href="#改变颜色" class="headerlink" title="改变颜色"></a>改变颜色</h3><p>全局数组记录颜色，按键改变当前索引，记得处理下标越界。</p>
+<h3 id="改变光源位置"><a href="#改变光源位置" class="headerlink" title="改变光源位置"></a>改变光源位置</h3><p>这里需要接受键盘输入方向键，按照glut的设计，方向键等特殊按键和普通按键（就是对应了一个字符的按键）采用的是两个不同的函数。</p>
+<p>添加特殊按键监听应该使用<code>glutSpecialFunc()</code> 函数，传入的回调函数与普通按键监听也有不同，第一个参数将是一个 <code>int</code> 类型的参数，用来表示按键键值，方向键左上右下键值分别是100-103。</p>
+<h3 id="格网装入和显示"><a href="#格网装入和显示" class="headerlink" title="格网装入和显示"></a>格网装入和显示</h3><p>读取文件而已呀。</p>
+<h2 id="附加-易"><a href="#附加-易" class="headerlink" title="附加-易"></a>附加-易</h2><h3 id="按下r键后，自动旋转模型。-参考glutTimerFunc"><a href="#按下r键后，自动旋转模型。-参考glutTimerFunc" class="headerlink" title="按下r键后，自动旋转模型。(参考glutTimerFunc)"></a>按下r键后，自动旋转模型。(参考<code>glutTimerFunc</code>)</h3><p><code>glutTimerFunc(unsigned int millis, void (*func)(int value), int value)</code></p>
+<p>意思就是在millis毫秒后，用value当做参数调用func。这里并没有循环的过程，所以需要实现动画的话，func函数结尾处再次调用<code>glutTimerFunc</code>，然后自行判断何时停止。</p>
+<p>除了使用 <code>glutTimerFunc</code> 函数之外，还有一些办法可以实现动画效果。例如</p>
+<p><code>glutIdleFunc(void (*func)(void))</code></p>
+<p>这个函数会让系统在空闲时调用传入的func（一旦空闲就会调用），但是无法很好的控制动画速度。所以还是推荐使用上面那个。</p>
+<p>我在使用<code>glutTimerFunc</code> 时，一直出现递归调用失效的bug，直到重新把glut文件下载，重新放到那几个文件夹进去后才得以解决，如果出现相同问题的可以试一下。</p>
+<h3 id="使用OpenGL的显示列表（lists）或者结点缓冲对象（VBO：vertex-buffer-objects）来实现高速渲染。"><a href="#使用OpenGL的显示列表（lists）或者结点缓冲对象（VBO：vertex-buffer-objects）来实现高速渲染。" class="headerlink" title="使用OpenGL的显示列表（lists）或者结点缓冲对象（VBO：vertex buffer objects）来实现高速渲染。"></a>使用OpenGL的显示列表（lists）或者结点缓冲对象（VBO：vertex buffer objects）来实现高速渲染。</h3><p>Display lists 是将一堆opengl的代码储存起来，每次调用就不需要再次编译了（可能是这个意思），在重复利用相同部件时很有效果。</p>
+<p>使用方法如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//display list 编号，使用编号指定要执行的display list</span></div><div class="line"><span class="keyword">int</span> displayList = <span class="number">1</span>;</div><div class="line"><span class="comment">//生成display list</span></div><div class="line">glGenLists(<span class="number">1</span>);</div><div class="line"><span class="comment">// 上面的代码一般在init函数里面</span></div><div class="line"></div><div class="line"><span class="comment">// 下面的代码应该在读取文件完成后</span></div><div class="line"><span class="comment">// 开始一个 display list</span></div><div class="line">glNewList(<span class="number">1</span>, GL_COMPILE);</div><div class="line">	<span class="comment">//绘制代码，应当只有绘制三角形部分，其他类似清屏设置颜色等代码代码仍需写在display函数中</span></div><div class="line">glEndList();</div><div class="line"></div><div class="line"><span class="comment">// 下面的代码应该在 display 函数中</span></div><div class="line">...</div><div class="line">glCallList(<span class="number">1</span>);</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>需要注意的是，生成好的display list 会记录下当时所用的变量，当绘制代码中出现的变量变化时，并不会改变display list显示效果。</p>
+<h3 id="修改代码，当按下c键-时，颜色从当前色光滑渐变到目标色-而不直接切换成目标色"><a href="#修改代码，当按下c键-时，颜色从当前色光滑渐变到目标色-而不直接切换成目标色" class="headerlink" title="修改代码，当按下c键 时，颜色从当前色光滑渐变到目标色(而不直接切换成目标色)."></a>修改代码，当按下<code>c键</code> 时，颜色从当前色光滑渐变到目标色(而不直接切换成目标色).</h3><p>按下c键后，记录下当前颜色和目标颜色，然后在glutTimerFunc的回调中，每一次把当前颜色向目标颜色改变一些些。</p>
+<h2 id="附加-中"><a href="#附加-中" class="headerlink" title="附加-中"></a>附加-中</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置鼠标按键事件监听</span></div><div class="line">glutMouseFunc(mouse);</div><div class="line"><span class="comment">// 设置鼠标移动监听（只在有鼠标按键按下时）</span></div><div class="line">glutMotionFunc(mouseMotion);</div><div class="line"></div><div class="line"><span class="comment">// 平移变化</span></div><div class="line">glTranslatef (GLfloat x, GLfloat y, GLfloat z);</div><div class="line"><span class="comment">// 旋转变化</span></div><div class="line">glRotatef (GLdouble angle, GLdouble x, GLdouble y, GLdouble z);</div><div class="line"><span class="comment">// 缩放变化</span></div><div class="line">glScalef (GLfloat x, GLfloat y, GLfloat z);</div><div class="line"><span class="comment">// 参数意思应该都能猜出来</span></div></pre></td></tr></table></figure>
+<p>在mouse中记录下当前按下的按键，在mouseMotion中通过移动距离改变对应的全局变量，然后调用 glutPostRedisplay()函数提醒系统重绘。</p>
+<h2 id="附加-难"><a href="#附加-难" class="headerlink" title="附加-难"></a>附加-难</h2><p>未完待续</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/wepay.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">chrome</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">计算机图形学</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://xudaashuai.github.io/2017/09/05/计算机图形学-作业0踩坑指南/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2017/09/05/as/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">as</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本要求"><span class="toc-number">1.</span> <span class="toc-text">基本要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#改变颜色"><span class="toc-number">1.1.</span> <span class="toc-text">改变颜色</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改变光源位置"><span class="toc-number">1.2.</span> <span class="toc-text">改变光源位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#格网装入和显示"><span class="toc-number">1.3.</span> <span class="toc-text">格网装入和显示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附加-易"><span class="toc-number">2.</span> <span class="toc-text">附加-易</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#按下r键后，自动旋转模型。-参考glutTimerFunc"><span class="toc-number">2.1.</span> <span class="toc-text">按下r键后，自动旋转模型。(参考glutTimerFunc)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用OpenGL的显示列表（lists）或者结点缓冲对象（VBO：vertex-buffer-objects）来实现高速渲染。"><span class="toc-number">2.2.</span> <span class="toc-text">使用OpenGL的显示列表（lists）或者结点缓冲对象（VBO：vertex buffer objects）来实现高速渲染。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改代码，当按下c键-时，颜色从当前色光滑渐变到目标色-而不直接切换成目标色"><span class="toc-number">2.3.</span> <span class="toc-text">修改代码，当按下c键 时，颜色从当前色光滑渐变到目标色(而不直接切换成目标色).</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附加-中"><span class="toc-number">3.</span> <span class="toc-text">附加-中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附加-难"><span class="toc-number">4.</span> <span class="toc-text">附加-难</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
 
 
           </div>
@@ -228,9 +377,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
