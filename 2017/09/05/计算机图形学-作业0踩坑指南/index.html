@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="徐大帅的博客">
 <meta property="og:description" content="作业一的确比较简单耶，还是有一些些坑容易踩中。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-06T09:45:51.070Z">
+<meta property="og:updated_time" content="2017-09-07T17:15:12.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机图形学-作业0踩坑指南">
 <meta name="twitter:description" content="作业一的确比较简单耶，还是有一些些坑容易踩中。">
@@ -193,6 +193,7 @@
 <h2 id="附加-中"><a href="#附加-中" class="headerlink" title="附加-中"></a>附加-中</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 设置鼠标按键事件监听</span></div><div class="line">glutMouseFunc(mouse);</div><div class="line"><span class="comment">// 设置鼠标移动监听（只在有鼠标按键按下时）</span></div><div class="line">glutMotionFunc(mouseMotion);</div><div class="line"></div><div class="line"><span class="comment">// 平移变化</span></div><div class="line">glTranslatef (GLfloat x, GLfloat y, GLfloat z);</div><div class="line"><span class="comment">// 旋转变化</span></div><div class="line">glRotatef (GLdouble angle, GLdouble x, GLdouble y, GLdouble z);</div><div class="line"><span class="comment">// 缩放变化</span></div><div class="line">glScalef (GLfloat x, GLfloat y, GLfloat z);</div><div class="line"><span class="comment">// 参数意思应该都能猜出来</span></div></pre></td></tr></table></figure>
 <p>在mouse中记录下当前按下的按键，在mouseMotion中通过移动距离改变对应的全局变量，然后调用 glutPostRedisplay()函数提醒系统重绘。</p>
 <h2 id="附加-难"><a href="#附加-难" class="headerlink" title="附加-难"></a>附加-难</h2><p>未完待续</p>
+<p>项目地址 <a href="github.com/xudaashuai/cg">我的github</a></p>
 
       
 
